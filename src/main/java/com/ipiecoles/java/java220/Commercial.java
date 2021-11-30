@@ -18,12 +18,11 @@ public class Commercial extends Employe{
         this.caAnnuel = caAnnuel;
     }
 
-    public Commercial(String nom, String prenom, String matricule, LocalDate dateEmbauche, Double salaire,
-                      Double caAnnuel, Integer performance) {
-        this(nom, prenom, matricule, dateEmbauche, salaire, caAnnuel);
+public Commercial(String nom, String prenom, String matricule, LocalDate dateEmbauche, Double salaire,
+                      Double caAnnuel, Integer performance, Boolean tempsPartiels, String sexe) {
+        this(nom, prenom, matricule, dateEmbauche, salaire, caAnnuel, tempsPartiels, sexe);
         this.performance = performance;
     }
-
     public Double getCaAnnuel() {
         return caAnnuel;
     }
@@ -59,6 +58,20 @@ public class Commercial extends Employe{
 
     public Boolean performanceEgale(Integer performance){
         return  this.performance.equals(performance);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), caAnnuel, performance);
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Commercial{");
+        sb.append("caAnnuel=").append(caAnnuel);
+        sb.append(", performance=").append(performance);
+        sb.append('}');
+        return super.toString() + sb.toString();
     }
 
     public Note equivalenceNote(){
